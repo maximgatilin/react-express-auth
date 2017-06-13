@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SignUpForm from '../components/SignUpForm';
+import PropTypes from 'prop-types';
 
 export default class SignUpPage extends Component {
   constructor(props) {
@@ -50,7 +51,11 @@ export default class SignUpPage extends Component {
           errors: {}
         });
 
-        console.log('The form is valid')
+        // set a message
+        localStorage.setItem('successMessage', xhr.response.message);
+
+        // make a redirect
+        this.context.router.replace('/login');
       } else {
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
@@ -73,3 +78,7 @@ export default class SignUpPage extends Component {
     )
   }
 }
+
+SignUpPage.contextTypes = {
+  router: PropTypes.object.isRequired
+};

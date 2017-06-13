@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LoginForm from '../components/LoginForm';
+import Auth from '../modules/Auth';
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -48,7 +50,11 @@ export default class LoginPage extends Component {
           errors: {}
         });
 
-        console.log('The form is valid')
+        // Save the token
+        Auth.authenticateUser(xhr.response.token);
+
+        // change the current URL to /
+        this.context.router.replace('/');
       } else {
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
@@ -71,3 +77,7 @@ export default class LoginPage extends Component {
     )
   }
 }
+
+LoginPage.contextTypes = {
+  router: PropTypes.object.isRequired
+};

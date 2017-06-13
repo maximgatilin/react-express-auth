@@ -1,15 +1,23 @@
 // todo update to router v4
 import Base from './components/Base';
 import HomePage from './components/HomePage';
+import DashboardPage from './containers/DashboardPage'
 import LoginPage from './containers/LoginPage';
 import SignUpPage from './containers/SignUpPage';
+import Auth from './modules/Auth';
 
 const routes = {
   component: Base,
   childRoutes: [
     {
       path: '/',
-      component: HomePage
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          callback(null, DashboardPage);
+        } else {
+          callback(null, HomePage)
+        }
+      }
     },
 
     {
@@ -20,6 +28,15 @@ const routes = {
     {
       path: '/signup',
       component: SignUpPage
+    },
+
+    {
+      path: '/logout',
+      onEnter: (nextState, replace) => {
+        Auth.deauthenticateUser();
+
+        replace('/');
+      }
     }
   ]
 };
