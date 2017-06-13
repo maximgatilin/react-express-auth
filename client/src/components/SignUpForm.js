@@ -35,7 +35,7 @@ export default function SignUpForm({onSubmit, onChange, errors, user}) {
           type="email"
           errorText={errors.email}
           onChange={onChange}
-          value={user.name}/>
+          value={user.email}/>
       </div>
 
       <div className="field-line">
@@ -45,7 +45,7 @@ export default function SignUpForm({onSubmit, onChange, errors, user}) {
           name="password"
           errorText={errors.password}
           onChange={onChange}
-          value={user.name}/>
+          value={user.password}/>
       </div>
 
       <div className="button-line">
