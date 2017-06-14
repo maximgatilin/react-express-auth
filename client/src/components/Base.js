@@ -2,13 +2,14 @@ import React from 'react';
 import { Link, IndexLink} from 'react-router';
 import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
+import styles from './Base.css';
 
 const propTypes = {
   children: PropTypes.object.isRequired
 };
 
 export default function Base({children}) {
-  return <div>
+  return <div className={styles.container}>
     <div className="top-bar">
       <div className="top-bar-left">
         <IndexLink to="/">React App</IndexLink>

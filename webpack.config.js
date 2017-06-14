@@ -20,7 +20,11 @@ module.exports = {
       query: {
         presets: ['react', 'es2015']
       }
-    }]
+    },
+      {
+        test: /\.css$/,
+        loader: `style!css?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss`
+      }],
   },
 
   // Start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
