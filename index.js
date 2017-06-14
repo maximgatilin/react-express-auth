@@ -10,9 +10,7 @@ require('./server/models').connect(config.dbUri);
 const app = express();
 
 // Static files
-// todo add __dirname
-app.use(express.static('./server/static'));
-app.use(express.static('./client/dist'));
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // View engine
 app.set('views', path.join(__dirname, 'server/views'));
