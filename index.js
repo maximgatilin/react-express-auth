@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -12,6 +13,10 @@ const app = express();
 // todo add __dirname
 app.use(express.static('./server/static'));
 app.use(express.static('./client/dist'));
+
+// View engine
+app.set('views', path.join(__dirname, 'server/views'));
+app.set('view engine', 'pug');
 
 // Tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,8 +35,10 @@ const authCheckMiddleware = require('./server/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 
 // routes
+const routes = require('./server/routes');
 const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
+app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 

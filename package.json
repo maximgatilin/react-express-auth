@@ -28,6 +28,7 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "prop-types": "^15.5.10",
+    "pug": "^2.0.0-rc.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^3.0.0",
