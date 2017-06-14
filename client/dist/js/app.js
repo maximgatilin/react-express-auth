@@ -36500,8 +36500,9 @@
 
 	  _createClass(Auth, null, [{
 	    key: 'authenticateUser',
-	    value: function authenticateUser(token) {
+	    value: function authenticateUser(token, user) {
 	      localStorage.setItem('token', token);
+	      localStorage.setItem('username', user.name);
 	    }
 	  }, {
 	    key: 'isUserAuthenticated',
@@ -36512,11 +36513,17 @@
 	    key: 'deauthenticateUser',
 	    value: function deauthenticateUser() {
 	      localStorage.removeItem('token');
+	      localStorage.removeItem('username');
 	    }
 	  }, {
 	    key: 'getToken',
 	    value: function getToken() {
 	      return localStorage.getItem('token');
+	    }
+	  }, {
+	    key: 'getUser',
+	    value: function getUser() {
+	      return localStorage.getItem('username');
 	    }
 	  }]);
 
@@ -42073,6 +42080,10 @@
 
 	var _Card = __webpack_require__(410);
 
+	var _Auth = __webpack_require__(408);
+
+	var _Auth2 = _interopRequireDefault(_Auth);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Dashboard = function Dashboard(_ref) {
@@ -42088,6 +42099,12 @@
 	      _Card.CardText,
 	      { style: { fontSize: '16px', color: 'green' } },
 	      secretData
+	    ),
+	    _Auth2.default.isUserAuthenticated() && _react2.default.createElement(
+	      'p',
+	      null,
+	      'Hello, ',
+	      _Auth2.default.getUser()
 	    )
 	  );
 	};
@@ -42192,7 +42209,7 @@
 	          });
 
 	          // Save the token
-	          _Auth2.default.authenticateUser(xhr.response.token);
+	          _Auth2.default.authenticateUser(xhr.response.token, xhr.response.user);
 
 	          // change the current URL to /
 	          _this2.context.router.replace('/');

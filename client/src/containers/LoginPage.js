@@ -51,7 +51,7 @@ export default class LoginPage extends Component {
         });
 
         // Save the token
-        Auth.authenticateUser(xhr.response.token);
+        Auth.authenticateUser(xhr.response.token, xhr.response.user);
 
         // change the current URL to /
         this.context.router.replace('/');
