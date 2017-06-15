@@ -1,32 +1,61 @@
-// todo migrate to Webpack 2
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  // the entry file for the bundle
   entry: path.join(__dirname, '/client/src/App.js'),
 
-  // the bundle file we will get in the result
   output: {
-    path: path.join(__dirname, '/client/dist/js'),
+    path: path.resolve(__dirname, 'client/dist/js'),
     filename: 'app.js'
   },
 
   module: {
-    // apply loaders to files that meet given conditions
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       include: path.join(__dirname, '/client/src'),
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015']
-      }
-    },
-      {
-        test: /\.css$/,
-        loader: `style!css?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss`
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['react', 'es2015']
+        }
       }],
+    }, {
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'style-loader'
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]'
+          }
+        },
+        {
+          loader: 'postcss-loader'
+        }
+      ]
+    }]
   },
 
-  // Start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
-  watch: true
+  devServer: {
+    port: 9000,
+    contentBase: path.join(__dirname),
+    proxy: {
+      "/": {
+        target: "http://localhost:3000",
+        bypass: function(req, res, proxyOptions) {
+          if (req.headers.accept.indexOf("html") !== -1) {
+            return "/index.html";
+          }
+        }
+      }
+    }
+  },
+
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+  ]
 };

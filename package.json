@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --use_strict index.js",
-    "bundle": "webpack"
+    "build": "webpack -p",
+    "start-frontend": "webpack-dev-server --inline"
   },
   "repository": {
     "type": "git",
@@ -44,7 +45,8 @@
     "nodemon": "^1.11.0",
     "postcss-loader": "^2.0.5",
     "style-loader": "^0.18.2",
-    "webpack": "^1.13.3"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "postcss": {}
 }
