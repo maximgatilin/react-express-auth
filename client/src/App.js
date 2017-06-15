@@ -9,6 +9,7 @@ import routes from './routes';
 import './App.css';
 
 ReactDom.render((
-    <Router history={browserHistory} routes={routes}/>),
+  // giving random key for Router fixes bug with HMR and React-router
+    <Router history={browserHistory} routes={routes} key={Math.random()}/>),
   document.getElementById('react-app')
 );
