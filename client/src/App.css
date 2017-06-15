@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f4f0ef;
+  height: 100%;
+}
+
+:global(.app_container) {
+  height: 100%;
+}
