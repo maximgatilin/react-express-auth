@@ -16,11 +16,11 @@ module.exports = {
       use: [{
         loader: 'babel-loader',
         options: {
-          presets: ['react', 'es2015']
+          presets: ['react', ['es2015', {modules: false}]]
         }
       }],
     }, {
-      test: /\.css$/,
+      test: /\.scss$/,
       use: [
         {
           loader: 'style-loader'
@@ -30,11 +30,15 @@ module.exports = {
           options: {
             importLoaders: 1,
             modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+            minimize: true
           }
         },
         {
           loader: 'postcss-loader'
+        },
+        {
+          loader: "sass-loader"
         }
       ]
     }]
@@ -56,6 +60,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.NamedModulesPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 };

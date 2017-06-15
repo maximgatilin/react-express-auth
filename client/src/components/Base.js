@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, IndexLink} from 'react-router';
 import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
-import styles from './Base.css';
+import styles from './Base.scss';
 
 const propTypes = {
   children: PropTypes.object.isRequired
