@@ -1,5 +1,5 @@
 // todo update to router v4
-import Base from './components/Base';
+import Base from './components/Base/Base';
 import HomePage from './components/HomePage';
 import DashboardPage from './containers/DashboardPage'
 import LoginPage from './containers/LoginPage';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LoginForm from '../components/LoginForm';
+import Login from '../components/forms/Login/Login';
 import Auth from '../modules/Auth';
 
 export default class LoginPage extends Component {
@@ -69,7 +69,7 @@ export default class LoginPage extends Component {
 
   render() {
     return (
-      <LoginForm
+      <Login
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}

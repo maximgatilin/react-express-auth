@@ -1,0 +1,25 @@
+@import '../../sass_globals/variables';
+
+.label {
+  display: block;
+  margin-bottom:10px;
+  font-weight: 700;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding:10px;
+  border-radius: 3px;
+  border: 1px solid rgba($theme_background, .5);
+  transition: .3s ease;
+
+  &:hover, &:focus {
+    border-color: rgba($theme_background, 1)
+  }
+
+  &:focus, &:active {
+    outline: none;
+  }
+}

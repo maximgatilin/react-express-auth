@@ -1,4 +1,5 @@
 {
   "dbUri": "mongodb://localhost/react_app",
-  "jwtSecret": "15df1$dfsdaf"
+  "jwtSecret": "15df1$dfsdaf",
+  "gitRepo": "https://github.com/maximgatilin/react-express-auth"
 }

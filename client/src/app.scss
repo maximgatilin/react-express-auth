@@ -1,3 +1,5 @@
+@import './sass_globals/variables';
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,9 +11,16 @@ html {
   width: 100%;
 }
 
+a {
+  color: $accent_color;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 body {
   font-family: sans-serif;
-  background: #f4f0ef;
   height: 100%;
 }
 

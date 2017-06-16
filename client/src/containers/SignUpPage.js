@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SignUpForm from '../components/SignUpForm';
+import SignUp from '../components/forms/Signup/Signup';
 import PropTypes from 'prop-types';
 
 export default class SignUpPage extends Component {
@@ -70,7 +70,7 @@ export default class SignUpPage extends Component {
 
   render() {
     return (
-      <SignUpForm
+      <SignUp
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
