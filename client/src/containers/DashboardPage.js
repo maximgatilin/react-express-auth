@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Auth from '../modules/Auth';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../components/Dashboard/Dashboard';
 
 class DashboardPage extends Component {
   constructor(props) {

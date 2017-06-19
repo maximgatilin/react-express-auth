@@ -2,7 +2,10 @@ import React from 'react';
 import styles from './Button.scss';
 import PropTypes from 'prop-types';
 
-const propTypes = {};
+const propTypes = {
+  type: PropTypes.string,
+  style: PropTypes.string
+};
 
 export default function Button({
                                  type = 'submit',

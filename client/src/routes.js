@@ -1,8 +1,7 @@
-// todo update to router v4
 import Base from './components/Base/Base';
 import HomePage from './components/HomePage';
 import DashboardPage from './containers/DashboardPage'
-import LoginPage from './containers/LoginPage';
+import LoginPage from './pages/Login';
 import SignUpPage from './containers/SignUpPage';
 import Auth from './modules/Auth';
 
@@ -28,15 +27,6 @@ const routes = {
     {
       path: '/signup',
       component: SignUpPage
-    },
-
-    {
-      path: '/logout',
-      onEnter: (nextState, replace) => {
-        Auth.deauthenticateUser();
-
-        replace('/');
-      }
     }
   ]
 };

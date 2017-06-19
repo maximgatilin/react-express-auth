@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link, IndexLink} from 'react-router';
+import PropTypes from 'prop-types';
 import styles from './Header.scss';
-import Auth from '../../modules/Auth';
 
-export default function Header() {
+const propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired
+};
+
+export default function Header({isAuthenticated, handleLogout}) {
   return (
     <div className={styles.block}>
       <div className={styles.inner}>
@@ -11,9 +16,9 @@ export default function Header() {
           <IndexLink to="/" className={styles.logo}>App Logo</IndexLink>
         </div>
         <div className={styles.right}>
-          {Auth.isUserAuthenticated() ? (
+          {isAuthenticated ? (
             <div>
-              <Link to="/logout" className={styles.link}>Log out</Link>
+              <a href="#" className={styles.link} onClick={handleLogout}>Log out</a>
             </div>
           ):(
             <div>
@@ -26,3 +31,5 @@ export default function Header() {
     </div>
   );
 }
+
+Header.propTypes = propTypes;

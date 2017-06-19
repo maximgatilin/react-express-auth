@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Base.scss';
-import Header from '../Header/Header';
+import HeaderContainer from '../../containers/HeaderContainer';
 import Footer from '../Footer/Footer';
 
 const propTypes = {
@@ -10,7 +10,7 @@ const propTypes = {
 
 export default function Base({children}) {
   return <div className={styles.container}>
-    <Header/>
+    <HeaderContainer/>
     <div className={styles.content}>
       {children}
     </div>
