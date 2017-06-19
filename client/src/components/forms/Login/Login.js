@@ -4,6 +4,7 @@ import styles from './Login.scss';
 import TextInput from '../../TextInput/TextInput';
 import Button from '../../Button/Button';
 import FormLine from '../../FormLine/FormLine';
+import Error from '../../Error/Error';
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -12,7 +13,11 @@ const propTypes = {
 
 export default function Login({handleSubmit, errors = {}}) {
   return <form action="/" onSubmit={handleSubmit} className={styles.form}>
-    {errors && errors.summary && <p className="error-message">{errors.summary}</p>}
+    {errors && errors.summary &&
+    <FormLine>
+      <Error type='primary'>{errors.summary}</Error>
+    </FormLine>
+    }
 
     <FormLine>
       <TextInput

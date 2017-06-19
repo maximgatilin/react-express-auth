@@ -3,7 +3,7 @@
 %button {
   border: none;
   padding: 7px 15px;
-  border-radius: 3px;
+  border-radius: $global_radius;
   font-size: 14px;
   cursor: pointer;
   transition: .3s ease;

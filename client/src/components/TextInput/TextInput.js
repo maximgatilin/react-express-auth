@@ -2,6 +2,8 @@ import React from 'react';
 import {Field} from 'redux-form';
 import PropTypes from 'prop-types';
 import styles from './TextInput.scss';
+import Error from "../Error/Error";
+import FormLine from "../FormLine/FormLine";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -25,7 +27,10 @@ export default function TextInput({
   return (
     <div>
       {labelText && <label htmlFor={id} className={styles.label}>{labelText}</label>}
-      {error && <p>{error}</p>}
+      {error &&
+      <FormLine>
+        <Error type='secondary'>{error}</Error>
+      </FormLine>}
       <Field
         id={id}
         type={type}
