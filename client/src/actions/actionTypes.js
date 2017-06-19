@@ -1,0 +1,1 @@
+export const ADD_EXHIBIT = 'ADD_EXHIBIT';
