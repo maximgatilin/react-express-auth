@@ -99,7 +99,10 @@ export function loginUser(creds) {
           AuthModule.authenticateUser(res.token, res.user);
           // Dispatch the success action
           dispatch(receiveLogin());
+          // redirect to home page
           dispatch(push('/'));
+          // show success message
+          dispatch(showSuccess(res.message));
         }
       }).catch(err => console.log("Error: ", err))
   }
