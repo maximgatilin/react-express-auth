@@ -9,10 +9,9 @@ function requestSignup() {
   }
 }
 
-function receiveSignup(message) {
+function receiveSignup() {
   return {
-    type: types.SIGNUP_SUCCESS,
-    message
+    type: types.SIGNUP_SUCCESS
   }
 }
 
@@ -44,9 +43,12 @@ export function signupUser(creds) {
           // dispatch the error condition
           dispatch(signupError(res.message, res.errors))
         } else {
-          dispatch(push('/login'));
           // Dispatch the success action
-          dispatch(receiveSignup(res.message));
+          dispatch(receiveSignup());
+          // Redirect to login page
+          dispatch(push('/login'));
+          // Show success message
+          dispatch(showSuccess(res.message))
         }
       }).catch(err => console.log("Error: ", err))
   }
@@ -120,9 +122,16 @@ export function logoutUser() {
   };
 }
 
-// Errors
-export function resetErrors() {
+// Messages
+export function resetMessages() {
   return {
     type: types.RESET_MESSAGES
+  }
+}
+
+export function showSuccess(message) {
+  return {
+    type: types.SHOW_SUCCESS,
+    message
   }
 }

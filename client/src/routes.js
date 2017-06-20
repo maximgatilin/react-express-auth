@@ -9,7 +9,7 @@ import * as actionsCreators from './actions/actionCreators';
 const routes = {
   component: Base,
   onChange: function() {
-    store.dispatch(actionsCreators.resetErrors());
+    store.dispatch(actionsCreators.resetMessages());
   },
   childRoutes: [
     {

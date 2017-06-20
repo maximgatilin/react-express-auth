@@ -38,7 +38,11 @@ export default function auth(state = {
     case types.SIGNUP_SUCCESS:
       return {
         ...state,
-        errors: {},
+        errors: {}
+      };
+    case types.SHOW_SUCCESS:
+      return {
+        ...state,
         successMessage: action.message
       };
     case types.RESET_MESSAGES:

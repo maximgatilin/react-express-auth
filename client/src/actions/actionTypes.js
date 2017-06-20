@@ -10,3 +10,5 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
 export const RESET_MESSAGES = 'RESET_MESSAGES';
 
+export const SHOW_SUCCESS = 'SHOW_SUCCESS';
+
