@@ -3,15 +3,20 @@ import HomePage from './pages/Home';
 import DashboardPage from './pages/Dashboard';
 import LoginPage from './pages/Login';
 import SignUpPage from './pages/Signup';
-import Auth from './modules/Auth';
+import store from './store';
+import * as actionsCreators from './actions/actionCreators';
 
 const routes = {
   component: Base,
+  onChange: function() {
+    store.dispatch(actionsCreators.resetErrors());
+  },
   childRoutes: [
     {
       path: '/',
       getComponent: (location, callback) => {
-        if (Auth.isUserAuthenticated()) {
+        const isAuthenticated = store.getState().auth.isAuthenticated;
+        if (isAuthenticated) {
           callback(null, DashboardPage);
         } else {
           callback(null, HomePage)

@@ -22,6 +22,7 @@ export default function auth(state = {
         errors: {}
       };
     case types.LOGIN_FAILURE:
+    case types.SIGNUP_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -32,6 +33,11 @@ export default function auth(state = {
       return {
         ...state,
         isAuthenticated: false
+      };
+    case types.RESET_ERRORS:
+      return {
+        ...state,
+        errors: {}
       };
     default:
       return state

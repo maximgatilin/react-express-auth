@@ -118,3 +118,10 @@ export function logoutUser() {
     dispatch(push('/'));
   };
 }
+
+// Errors
+export function resetErrors() {
+  return {
+    type: types.RESET_ERRORS
+  }
+}
