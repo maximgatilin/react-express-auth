@@ -2,6 +2,55 @@ import * as types from './actionTypes';
 import AuthModule from '../modules/Auth';
 import { push } from 'react-router-redux';
 
+// Sign up
+function requestSignup() {
+  return {
+    type: types.SIGNUP_REQUEST
+  }
+}
+
+function receiveSignup() {
+  return {
+    type: types.SIGNUP_SUCCESS,
+  }
+}
+
+function signupError(summary, errors) {
+  return {
+    type: types.SIGNUP_FAILURE,
+    errors: {
+      ...errors,
+      summary
+    }
+  }
+}
+
+export function signupUser(creds) {
+  const config = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: `name=${creds.name}&email=${creds.email}&password=${creds.password}`
+  };
+
+  return dispatch => {
+    dispatch(requestSignup());
+
+    return fetch('/auth/signup', config)
+      .then(res=> res.json())
+      .then(res => {
+        if (!res.success) {
+          // If there was a problem, we want to
+          // dispatch the error condition
+          dispatch(signupError(res.message, res.errors))
+        } else {
+          // Dispatch the success action
+          dispatch(receiveSignup());
+          dispatch(push('/login'));
+        }
+      }).catch(err => console.log("Error: ", err))
+  }
+}
+
 // Log In
 function requestLogin() {
   return {

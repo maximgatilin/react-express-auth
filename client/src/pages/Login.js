@@ -12,10 +12,5 @@ export default function LoginPage() {
       <LoginContainer />
       <p>Don't have an account? <Link to={'/signup'}>Create one</Link></p>
     </div>
-
   );
 }
-
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};

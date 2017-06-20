@@ -2,7 +2,7 @@ import Base from './components/Base/Base';
 import HomePage from './components/HomePage';
 import DashboardPage from './containers/DashboardPage'
 import LoginPage from './pages/Login';
-import SignUpPage from './containers/SignUpPage';
+import SignUpPage from './pages/Signup';
 import Auth from './modules/Auth';
 
 const routes = {

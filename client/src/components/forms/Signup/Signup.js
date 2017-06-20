@@ -1,33 +1,30 @@
 import React from 'react';
-import {Link} from 'react-router';
 import PropTypes from 'prop-types';
-import styles from './Signup.scss';
-import PageTitle from './../../PageTitle/PageTitle';
 import TextInput from '../../TextInput/TextInput';
+import Error from '../../Error/Error';
 import Button from '../../Button/Button';
 import FormLine from '../../FormLine/FormLine';
+import styles from './Signup.scss';
 
 const propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.object
 };
 
-export default function SignUp({onSubmit, onChange, errors, user}) {
-  return <form action="/" onSubmit={onSubmit} className={styles.form}>
-    <PageTitle>Sign Up</PageTitle>
-
-    {errors.summary && <p className="error-message">{errors.summary}</p>}
+export default function SignUp({handleSubmit, errors ={}}) {
+  return <form action="/" onSubmit={handleSubmit} className={styles.form}>
+    {errors && errors.summary &&
+    <FormLine>
+      <Error type='primary'>{errors.summary}</Error>
+    </FormLine>
+    }
 
     <FormLine>
       <TextInput
         id="name"
-        type="name"
         name="name"
-        onChange={onChange}
         required
-        value={user.name}
+        error={errors.name}
         labelText="Name"
       />
     </FormLine>
@@ -38,9 +35,8 @@ export default function SignUp({onSubmit, onChange, errors, user}) {
         id="email"
         type="email"
         name="email"
-        onChange={onChange}
         required
-        value={user.email}
+        error={errors.email}
         labelText="Email"
       />
     </FormLine>
@@ -49,17 +45,14 @@ export default function SignUp({onSubmit, onChange, errors, user}) {
         id="password"
         type="password"
         name="password"
-        onChange={onChange}
+        error={errors.password}
         required
-        value={user.password}
         labelText="Password"
       />
     </FormLine>
     <FormLine>
       <Button>Create New Account</Button>
     </FormLine>
-
-    <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
   </form>
 };
 
