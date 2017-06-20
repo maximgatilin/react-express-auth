@@ -117,11 +117,17 @@ function logout() {
 
 export function logoutUser() {
   return dispatch => {
+    // clear local storage
     AuthModule.deauthenticateUser();
 
+    // logout action
     dispatch(logout());
 
+    // redirect to homepage
     dispatch(push('/'));
+
+    // show success logout message
+    dispatch(showSuccess('You are successfully logged out'))
   };
 }
 

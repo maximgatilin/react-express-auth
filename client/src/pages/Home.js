@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import PageTitle from '../components/PageTitle/PageTitle';
-
+import React from 'react';
+import HomepageHeaderContainer from '../containers/HomepageHeaderContainer';
 
 export default function HomePage() {
   return (
     <div>
-      <PageTitle>Home page</PageTitle>
-      <p>You should login to see dashboard</p>
+      <HomepageHeaderContainer />
     </div>
   );
 }

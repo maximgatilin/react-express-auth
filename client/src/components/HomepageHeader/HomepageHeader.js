@@ -7,15 +7,16 @@ const propTypes = {
   successMessage: PropTypes.string
 };
 
-export default function DashboardHeader({successMessage}) {
+export default function HomepageHeader({successMessage}) {
   return (
     <div>
-      <PageTitle>Dashboard</PageTitle>
+      <PageTitle>Home page</PageTitle>
       {successMessage &&
-        <Message type='success' level="primary">{successMessage}</Message>
+      <Message type='success' level="primary">{successMessage}</Message>
       }
+      <p>You should login to see dashboard</p>
     </div>
   );
 }
 
-DashboardHeader.propTypes = propTypes;
+HomepageHeader.propTypes = propTypes;
