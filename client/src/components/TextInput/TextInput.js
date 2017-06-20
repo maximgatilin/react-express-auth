@@ -2,7 +2,7 @@ import React from 'react';
 import {Field} from 'redux-form';
 import PropTypes from 'prop-types';
 import styles from './TextInput.scss';
-import Error from "../Error/Error";
+import Message from "../Message/Message";
 import FormLine from "../FormLine/FormLine";
 
 const propTypes = {
@@ -29,7 +29,7 @@ export default function TextInput({
       {labelText && <label htmlFor={id} className={styles.label}>{labelText}</label>}
       {error &&
       <FormLine>
-        <Error type='secondary'>{error}</Error>
+        <Message type='error' level="secondary">{error}</Message>
       </FormLine>}
       <Field
         id={id}

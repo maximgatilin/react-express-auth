@@ -34,7 +34,7 @@ export default function auth(state = {
         ...state,
         isAuthenticated: false
       };
-    case types.RESET_ERRORS:
+    case types.RESET_MESSAGES:
       return {
         ...state,
         errors: {}

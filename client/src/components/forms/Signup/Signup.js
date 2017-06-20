@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../TextInput/TextInput';
-import Error from '../../Error/Error';
+import Message from '../../Message/Message';
 import Button from '../../Button/Button';
 import FormLine from '../../FormLine/FormLine';
 import styles from './Signup.scss';
@@ -15,7 +15,7 @@ export default function SignUp({handleSubmit, errors ={}}) {
   return <form action="/" onSubmit={handleSubmit} className={styles.form}>
     {errors && errors.summary &&
     <FormLine>
-      <Error type='primary'>{errors.summary}</Error>
+      <Message type='primary'>{errors.summary}</Message>
     </FormLine>
     }
 

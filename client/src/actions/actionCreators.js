@@ -122,6 +122,6 @@ export function logoutUser() {
 // Errors
 export function resetErrors() {
   return {
-    type: types.RESET_ERRORS
+    type: types.RESET_MESSAGES
   }
 }
