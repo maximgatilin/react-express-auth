@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --use_strict index.js",
     "build": "webpack -p",
-    "start-frontend": "webpack-dev-server --inline --hot"
+    "dev-server": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
