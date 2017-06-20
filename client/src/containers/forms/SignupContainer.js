@@ -14,8 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: function(...args) {
-      console.log('success');
-      // login action
+      // signup action
       bindActionCreators(actionCreators, dispatch).signupUser(...args)
     }
   }

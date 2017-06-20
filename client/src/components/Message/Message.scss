@@ -1,22 +1,28 @@
 @import '../../sass_globals/variables';
 
-%error {
+// message types
+.success {
+  color: $success_color;
+  border: 1px solid $success_color;
+  background: lighten($success_color, 50%);
+}
+
+.error {
   color: $error_color;
   border: 1px solid $error_color;
-  border-radius: $global_radius;
   background: lighten($error_color, 32%);
 }
-.primary {
-  @extend %error;
 
+// message levels
+.primary {
   padding:7px 10px;
   font-size: 15px;
   font-weight: 700;
+  border-radius:$global_radius;
 }
 
 .secondary {
-  @extend %error;
-
   font-size: 14px;
   padding:3px 6px;
+  border-radius:$global_radius;
 }

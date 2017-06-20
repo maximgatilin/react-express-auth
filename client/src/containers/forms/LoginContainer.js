@@ -5,9 +5,10 @@ import * as actionCreators from '../../actions/actionCreators';
 import LoginForm from '../../components/forms/Login/Login';
 
 const mapStateToProps = state => {
-  const { errors } = state.auth;
+  const { errors, successMessage } = state.auth;
   return {
-    errors
+    errors,
+    successMessage
   };
 };
 

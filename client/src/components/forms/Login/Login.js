@@ -8,14 +8,21 @@ import Message from '../../Message/Message';
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  successMessage: PropTypes.string
 };
 
-export default function Login({handleSubmit, errors = {}}) {
+export default function Login({handleSubmit, errors = {}, successMessage}) {
   return <form action="/" onSubmit={handleSubmit} className={styles.form}>
     {errors && errors.summary &&
     <FormLine>
       <Message type='error' level="primary">{errors.summary}</Message>
+    </FormLine>
+    }
+
+    {successMessage &&
+    <FormLine>
+      <Message type='success' level="primary">{successMessage}</Message>
     </FormLine>
     }
 

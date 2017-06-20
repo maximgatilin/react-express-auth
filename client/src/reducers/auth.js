@@ -27,17 +27,25 @@ export default function auth(state = {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        errors: action.errors
+        errors: action.errors,
+        successMessage: null
       };
     case types.LOGOUT_USER:
       return {
         ...state,
         isAuthenticated: false
       };
+    case types.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        errors: {},
+        successMessage: action.message
+      };
     case types.RESET_MESSAGES:
       return {
         ...state,
-        errors: {}
+        errors: {},
+        successMessage: null
       };
     default:
       return state

@@ -29,7 +29,7 @@ export default function TextInput({
       {labelText && <label htmlFor={id} className={styles.label}>{labelText}</label>}
       {error &&
       <FormLine>
-        <Message type='error' level="secondary">{error}</Message>
+        <Message type='error' level='secondary'>{error}</Message>
       </FormLine>}
       <Field
         id={id}

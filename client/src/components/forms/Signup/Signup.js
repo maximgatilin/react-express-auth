@@ -15,7 +15,7 @@ export default function SignUp({handleSubmit, errors ={}}) {
   return <form action="/" onSubmit={handleSubmit} className={styles.form}>
     {errors && errors.summary &&
     <FormLine>
-      <Message type='primary'>{errors.summary}</Message>
+      <Message type='error' level='primary'>{errors.summary}</Message>
     </FormLine>
     }
 

@@ -9,9 +9,10 @@ function requestSignup() {
   }
 }
 
-function receiveSignup() {
+function receiveSignup(message) {
   return {
     type: types.SIGNUP_SUCCESS,
+    message
   }
 }
 
@@ -43,9 +44,9 @@ export function signupUser(creds) {
           // dispatch the error condition
           dispatch(signupError(res.message, res.errors))
         } else {
-          // Dispatch the success action
-          dispatch(receiveSignup());
           dispatch(push('/login'));
+          // Dispatch the success action
+          dispatch(receiveSignup(res.message));
         }
       }).catch(err => console.log("Error: ", err))
   }
